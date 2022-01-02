@@ -1,6 +1,11 @@
 const userForm = document.querySelector("#blender_inputs");
 const copyBtn = document.querySelector("#copy");
 const clearBtn = document.querySelector("#clear");
+const eevee = document.querySelector("#eevee");
+const cycles = document.querySelector("#cycles");
+const submitBtn = document.querySelector("#submit_btn");
+const printLabel = document.querySelector("#print_label");
+const printOption = document.querySelector("#print");
 
 userForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -9,15 +14,21 @@ userForm.addEventListener("submit", (e) => {
 
   let userArgs = {
     blenderDir: formData.get("blender-path"),
-    fileDir: formData.get("file-dir"),
-    fileName: formData.get("file-name") + ".blend",
+    fileDir: getPath(formData.get("file-path")),
+    fileName: getFileName(formData.get("file-path")),
     blender: formData.get("run-blender"),
-    renderArg: formData.get("UI-rendering"),
     engineArg: formData.get("render-engine"),
+    printArg: formData.get("print-stats") ? "--cycles-print-stats" : null,
     startArg: formData.get("start-frame"),
     endArg: formData.get("end-frame"),
+    frameNumArg: formData.get("frames"),
     animationArg: formData.get("animation"),
   };
+
+  if (userArgs.animationArg === "-f" && userArgs.frameNumArg === "") {
+    alert("must specify frame number");
+    return;
+  }
 
   if (userArgs.startArg) {
     userArgs.startArg = "-s" + " " + userArgs.startArg;
@@ -38,35 +49,66 @@ userForm.addEventListener("submit", (e) => {
     output.innerHTML += " " + shortResponse;
     navigator.clipboard.writeText(output.innerHTML);
   }
+
   setTimeout(() => {
     document.querySelector("#alert").classList.remove("hidden");
     setTimeout(() => {
       document.querySelector("#alert").classList.add("hidden");
-    }, 800);
+    }, 1000);
   }, 100);
+
+  submitBtn.innerHTML = "Add to batch";
 });
+
+function fullConcatCMD(userArgs) {
+  return `${userArgs.blenderDir}&#13;${userArgs.blender} -b ${
+    userArgs.fileDir
+  }${userArgs.fileName} ${userArgs.engineArg} ${
+    userArgs.startArg ? userArgs.startArg : ""
+  } ${userArgs.endArg ? userArgs.endArg : ""} ${userArgs.animationArg} ${
+    userArgs.frameNumArg && userArgs.animationArg === "-f"
+      ? userArgs.frameNumArg
+      : ""
+  } ${userArgs.printArg ? userArgs.printArg : ""}`.replace(/\s\s+/g, " ");
+}
+
+function shortConcatCMD(userArgs) {
+  return `${userArgs.fileDir}${userArgs.fileName} ${userArgs.engineArg} ${
+    userArgs.startArg ? userArgs.startArg : ""
+  } ${userArgs.endArg ? userArgs.endArg : ""} ${userArgs.animationArg} ${
+    userArgs.frameNumArg && userArgs.animationArg === "-f"
+      ? userArgs.frameNumArg
+      : ""
+  } ${userArgs.printArg ? userArgs.printArg : ""}`.replace(/\s\s+/g, " ");
+}
+
+function getFileName(path) {
+  const lastSeperatorPos = path.lastIndexOf("\\");
+  return `'${path.slice(lastSeperatorPos + 1, path.length)}'`;
+}
+
+function getPath(path) {
+  const lastSeperatorPos = path.lastIndexOf("\\");
+  return path.slice(0, lastSeperatorPos + 1);
+}
 
 clearBtn.addEventListener("click", () => {
   const output = document.querySelector("#output");
   output.innerHTML = "";
+  submitBtn.innerHTML = "Generate new command";
 });
 
-function fullConcatCMD(userArgs) {
-  return `${userArgs.blenderDir}&#13;${userArgs.blender} ${
-    userArgs.renderArg
-  } ${userArgs.fileDir}'${userArgs.fileName}' ${userArgs.engineArg} ${
-    userArgs.startArg ? userArgs.startArg : ""
-  } ${userArgs.endArg ? userArgs.endArg : ""} ${userArgs.animationArg}`.replace(
-    /\s\s+/g,
-    " "
-  );
-}
+eevee.addEventListener("click", (event) => {
+  if (event.target.checked) {
+    printOption.classList.add("hidden");
+    printLabel.classList.add("hidden");
+    printOption.checked = null;
+  }
+});
 
-function shortConcatCMD(userArgs) {
-  return `${userArgs.fileDir} ${userArgs.engineArg} ${
-    userArgs.startArg ? userArgs.startArg : ""
-  } ${userArgs.endArg ? userArgs.endArg : ""} ${userArgs.animationArg}`.replace(
-    /\s\s+/g,
-    " "
-  );
-}
+cycles.addEventListener("click", (event) => {
+  if (event.target.checked) {
+    printLabel.classList.remove("hidden");
+    printOption.classList.remove("hidden");
+  }
+});

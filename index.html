@@ -13,20 +13,12 @@
       <h1>Blender command line GUI</h1>
       <section class="box">
         <h2>Target file</h2>
-        <label for="file_dir">.blend file directory</label>
+        <label for="file_path">.blend object directory</label>
         <input
-          id="file_dir"
+          id="file_path"
           type="text"
-          name="file-dir"
-          value="C:\Users\hallo\Desktop\"
-          required
-        />
-        <label for="file_name">.blend file name</label>
-        <input
-          id="file_name"
-          type="text"
-          name="file-name"
-          value="Test"
+          name="file-path"
+          value="C:\Users\hallo\Desktop\Test\Test 1.blend"
           required
         />
       </section>
@@ -52,20 +44,6 @@
       </section>
 
       <section class="box">
-        <h2>UI rendering</h2>
-        <label for="without_UI">Don't render UI</label>
-        <input
-          type="radio"
-          id="without_UI"
-          name="UI-rendering"
-          value="-b"
-          checked
-        />
-        <label for="render_UI">Render UI</label>
-        <input type="radio" id="render_UI" name="UI-rendering" value="" />
-      </section>
-
-      <section class="box">
         <h2>Render engine</h2>
         <label for="eevee">BLENDER_EEVEE</label>
         <input
@@ -82,19 +60,13 @@
           name="render-engine"
           value="-E CYCLES"
         />
+        <label for="print" id="print_label" class="hidden">Print render stats</label>
+        <input id="print" class="hidden print-opt" name="print-stats" type="checkbox">
       </section>
 
       <section class="box">
-        <h2>Frame inclusion</h2>
-        <label for="start_frame">Start frame</label>
-        <input id="start_frame" type="number" step="1" name="start-frame" />
-        <label for="end_frame">End frame</label>
-        <input id="end_frame" type="number" step="1" name="end-frame" />
-      </section>
-
-      <section class="box">
-        <h2>Animation</h2>
-        <label for="render_animation">Render Animation</label>
+        <h2>Render Type</h2>
+        <label for="render_animation"><strong>1: Selective animation</strong></label>
         <input
           type="radio"
           id="render_animation"
@@ -102,13 +74,26 @@
           value="-a"
           checked
         />
-        <label for="single_frame">Single frame</label>
+        <label for="start_frame">Start frame</label>
+        <input id="start_frame" type="number" step="1" name="start-frame" />
+        <label for="end_frame">End frame</label>
+        <input id="end_frame" type="number" step="1" name="end-frame" />
+
+        <br>
+        <br>
+        <label for="whole_animation"><strong> 2: Full length animation</strong></label>
+        <input type="radio" id="whole_animation" name="animation" value="-a" />
+
+        <br>
+        <label for="single_frame"><strong> 3: Single frame</strong></label>
         <input type="radio" id="single_frame" name="animation" value="-f" />
+        <label for="frame_number">Frame number</label>
+        <input type="number" id="frame_number" name="frames">
       </section>
-      
-          <button type="submit">Generate command</button>
-            <button id="clear" type="button">Clear</button>
-            <label id="alert" class="hidden" for="output">Copied to clipboard</label>
+
+      <button id="submit_btn" type="submit">Generate command</button>
+        <button id="clear" type="button">Clear</button>
+        <label id="alert" class="hidden" for="output">Copied to clipboard</label>
 
       </section>
     </form>
