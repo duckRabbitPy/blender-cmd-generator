@@ -13,20 +13,12 @@
       <h1>Blender command line GUI</h1>
       <section class="box">
         <h2>Target file</h2>
-        <label for="file_dir">.blend file directory</label>
+        <label for="file_path">.blend object directory</label>
         <input
-          id="file_dir"
+          id="file_path"
           type="text"
-          name="file-dir"
-          value="C:\Users\hallo\Desktop\"
-          required
-        />
-        <label for="file_name">.blend file name</label>
-        <input
-          id="file_name"
-          type="text"
-          name="file-name"
-          value="Test"
+          name="file-path"
+          value="C:\Users\hallo\Desktop\Test\Test 1.blend"
           required
         />
       </section>
@@ -49,20 +41,6 @@
           value="./blender"
           required
         />
-      </section>
-
-      <section class="box">
-        <h2>UI rendering</h2>
-        <label for="without_UI">Don't render UI</label>
-        <input
-          type="radio"
-          id="without_UI"
-          name="UI-rendering"
-          value="-b"
-          checked
-        />
-        <label for="render_UI">Render UI</label>
-        <input type="radio" id="render_UI" name="UI-rendering" value="" />
       </section>
 
       <section class="box">

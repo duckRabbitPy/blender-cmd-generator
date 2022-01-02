@@ -9,10 +9,9 @@ userForm.addEventListener("submit", (e) => {
 
   let userArgs = {
     blenderDir: formData.get("blender-path"),
-    fileDir: formData.get("file-dir"),
-    fileName: formData.get("file-name") + ".blend",
+    fileDir: getPath(formData.get("file-path")),
+    fileName: getFileName(formData.get("file-path")),
     blender: formData.get("run-blender"),
-    renderArg: formData.get("UI-rendering"),
     engineArg: formData.get("render-engine"),
     startArg: formData.get("start-frame"),
     endArg: formData.get("end-frame"),
@@ -52,9 +51,9 @@ clearBtn.addEventListener("click", () => {
 });
 
 function fullConcatCMD(userArgs) {
-  return `${userArgs.blenderDir}&#13;${userArgs.blender} ${
-    userArgs.renderArg
-  } ${userArgs.fileDir}'${userArgs.fileName}' ${userArgs.engineArg} ${
+  return `${userArgs.blenderDir}&#13;${userArgs.blender} -b ${
+    userArgs.fileDir
+  }${userArgs.fileName} ${userArgs.engineArg} ${
     userArgs.startArg ? userArgs.startArg : ""
   } ${userArgs.endArg ? userArgs.endArg : ""} ${userArgs.animationArg}`.replace(
     /\s\s+/g,
@@ -63,10 +62,20 @@ function fullConcatCMD(userArgs) {
 }
 
 function shortConcatCMD(userArgs) {
-  return `${userArgs.fileDir} ${userArgs.engineArg} ${
+  return `${userArgs.fileDir}${userArgs.fileName} ${userArgs.engineArg} ${
     userArgs.startArg ? userArgs.startArg : ""
   } ${userArgs.endArg ? userArgs.endArg : ""} ${userArgs.animationArg}`.replace(
     /\s\s+/g,
     " "
   );
+}
+
+function getFileName(path) {
+  const lastSeperatorPos = path.lastIndexOf("\\");
+  return `'${path.slice(lastSeperatorPos + 1, path.length)}'`;
+}
+
+function getPath(path) {
+  const lastSeperatorPos = path.lastIndexOf("\\");
+  return path.slice(0, lastSeperatorPos + 1);
 }
