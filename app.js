@@ -1,5 +1,6 @@
 const userForm = document.querySelector("#blender_inputs");
 const copyBtn = document.querySelector("#copy");
+const clearBtn = document.querySelector("#clear");
 
 userForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -38,4 +39,9 @@ userForm.addEventListener("submit", (e) => {
       document.querySelector("#alert").classList.add("hidden");
     }, 800);
   }, 100);
+});
+
+clearBtn.addEventListener("click", () => {
+  const output = document.querySelector("#output");
+  output.innerHTML = "";
 });

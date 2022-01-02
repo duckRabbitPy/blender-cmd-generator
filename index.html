@@ -17,7 +17,7 @@
           id="file_path"
           type="text"
           name="file-path"
-          value="C:\Users\hallo\Desktop\Test"
+          value="C:\Users\hallo\Desktop\'Test.blend'"
         />
       </section>
 
@@ -86,14 +86,21 @@
         />
         <label for="single_frame">Single frame</label>
         <input type="radio" id="single_frame" name="animation" value="-f" />
-        <button type="submit">Generate command</button>
+      </section>
+      
+          <button type="submit">Generate command</button>
+            <button id="clear" type="button">Clear</button>
+
       </section>
     </form>
 
-    <section class="container">
+    
+
+    <section class="container cmd-display">
       <label id="alert" class="hidden" for="output">Copied to clipboard</label>
-      <textarea id="output"></textarea>
+      <textarea id="output"></textarea>  
     </section>
+  
     <script src="app.js"></script>
   </body>
 </html>
