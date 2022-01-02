@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blender command line GUI</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <form id="blender_inputs">
+      <h1>Blender command line GUI</h1>
+      <section class="box">
+        <h2>Blender file location</h2>
+        <label for="file_path">File path</label>
+        <input
+          id="file_path"
+          type="text"
+          name="file-path"
+          value="C:\Users\hallo\Desktop\Test"
+        />
+      </section>
+
+      <section class="box">
+        <h2>Blender path</h2>
+        <label for="install_dir">Blender download directory</label>
+        <input
+          id="install_dir"
+          name="install-dir"
+          type="text"
+          name="install_dir"
+          value="./blender"
+        />
+      </section>
+
+      <section class="box">
+        <h2>UI rendering</h2>
+        <label for="without_UI">Don't render UI</label>
+        <input
+          type="radio"
+          id="without_UI"
+          name="UI-rendering"
+          value="-b"
+          checked
+        />
+        <label for="render_UI">Render UI</label>
+        <input type="radio" id="render_UI" name="UI-rendering" value="" />
+      </section>
+
+      <section class="box">
+        <h2>Render engine</h2>
+        <label for="eevee">BLENDER_EEVEE</label>
+        <input
+          type="radio"
+          id="eevee"
+          name="render-engine"
+          value="-E BLENDER_EEVEE"
+          checked
+        />
+        <label for="cycles">CYCLES</label>
+        <input
+          type="radio"
+          id="cycles"
+          name="render-engine"
+          value="-E CYCLES"
+        />
+      </section>
+
+      <section class="box">
+        <h2>Frame inclusion</h2>
+        <label for="start_frame">Start frame</label>
+        <input id="start_frame" type="number" step="1" name="start-frame" />
+        <label for="end_frame">End frame</label>
+        <input id="end_frame" type="number" step="1" name="end-frame" />
+      </section>
+
+      <section class="box">
+        <h2>Animation</h2>
+        <label for="render_animation">Render Animation</label>
+        <input
+          type="radio"
+          id="render_animation"
+          name="animation"
+          value="-a"
+          checked
+        />
+        <label for="single_frame">Single frame</label>
+        <input type="radio" id="single_frame" name="animation" value="-f" />
+        <button type="submit">Generate command</button>
+      </section>
+    </form>
+
+    <section class="container">
+      <label id="alert" class="hidden" for="output">Copied to clipboard</label>
+      <textarea id="output"></textarea>
+    </section>
+    <script src="app.js"></script>
+  </body>
+</html>
