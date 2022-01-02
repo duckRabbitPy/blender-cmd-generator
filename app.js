@@ -6,6 +6,10 @@ const cycles = document.querySelector("#cycles");
 const submitBtn = document.querySelector("#submit_btn");
 const printLabel = document.querySelector("#print_label");
 const printOption = document.querySelector("#print");
+const startInput = document.querySelector("#start_frame");
+const endInput = document.querySelector("#end_frame");
+const wholeInput = document.querySelector("#whole_animation");
+const singleInput = document.querySelector("#single_frame");
 
 userForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -111,4 +115,14 @@ cycles.addEventListener("click", (event) => {
     printLabel.classList.remove("hidden");
     printOption.classList.remove("hidden");
   }
+});
+
+wholeInput.addEventListener("click", () => {
+  startInput.value = "";
+  endInput.value = "";
+});
+
+singleInput.addEventListener("click", () => {
+  startInput.value = "";
+  endInput.value = "";
 });
