@@ -5,32 +5,37 @@ const clearBtn = document.querySelector("#clear");
 userForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  let formData = new FormData(userForm);
-  let filePath = formData.get("file-path");
-  let blenderDir = formData.get("install-dir");
-  let renderArg = formData.get("UI-rendering");
-  let engineArg = formData.get("render-engine");
-  let startArg = formData.get("start-frame");
-  if (startArg) {
-    startArg = "-s" + " " + startArg;
-  }
-  let endArg = formData.get("end-frame");
-  if (endArg) {
-    endArg = "-e" + " " + endArg;
-  }
-  let animationArg = formData.get("animation");
+  formData = new FormData(userForm);
 
-  let response = `${blenderDir} ${renderArg} ${filePath} ${engineArg} ${startArg} ${endArg} ${animationArg}`;
-  let shortResponse = `${filePath} ${engineArg} ${startArg} ${endArg} ${animationArg}`;
-  formattedResponse = response.replace(/\s\s+/g, " ");
-  formattedShortResponse = shortResponse.replace(/\s\s+/g, " ");
+  let userArgs = {
+    blenderDir: formData.get("blender-path"),
+    fileDir: formData.get("file-dir"),
+    fileName: formData.get("file-name") + ".blend",
+    blender: formData.get("run-blender"),
+    renderArg: formData.get("UI-rendering"),
+    engineArg: formData.get("render-engine"),
+    startArg: formData.get("start-frame"),
+    endArg: formData.get("end-frame"),
+    animationArg: formData.get("animation"),
+  };
+
+  if (userArgs.startArg) {
+    userArgs.startArg = "-s" + " " + userArgs.startArg;
+  }
+
+  if (userArgs.endArg) {
+    userArgs.endArg = "-e" + " " + userArgs.endArg;
+  }
+
+  let response = fullConcatCMD(userArgs);
+  let shortResponse = shortConcatCMD(userArgs);
 
   const output = document.querySelector("#output");
   if (output.innerHTML === "") {
-    output.innerHTML = formattedResponse;
-    navigator.clipboard.writeText(formattedResponse);
+    output.innerHTML = response;
+    navigator.clipboard.writeText(response);
   } else {
-    output.innerHTML += " " + formattedShortResponse;
+    output.innerHTML += " " + shortResponse;
     navigator.clipboard.writeText(output.innerHTML);
   }
   setTimeout(() => {
@@ -45,3 +50,23 @@ clearBtn.addEventListener("click", () => {
   const output = document.querySelector("#output");
   output.innerHTML = "";
 });
+
+function fullConcatCMD(userArgs) {
+  return `${userArgs.blenderDir}&#13;${userArgs.blender} ${
+    userArgs.renderArg
+  } ${userArgs.fileDir}'${userArgs.fileName}' ${userArgs.engineArg} ${
+    userArgs.startArg ? userArgs.startArg : ""
+  } ${userArgs.endArg ? userArgs.endArg : ""} ${userArgs.animationArg}`.replace(
+    /\s\s+/g,
+    " "
+  );
+}
+
+function shortConcatCMD(userArgs) {
+  return `${userArgs.fileDir} ${userArgs.engineArg} ${
+    userArgs.startArg ? userArgs.startArg : ""
+  } ${userArgs.endArg ? userArgs.endArg : ""} ${userArgs.animationArg}`.replace(
+    /\s\s+/g,
+    " "
+  );
+}

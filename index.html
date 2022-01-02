@@ -8,28 +8,46 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    
     <form id="blender_inputs">
       <h1>Blender command line GUI</h1>
       <section class="box">
-        <h2>Blender file location</h2>
-        <label for="file_path">File path</label>
+        <h2>Target file</h2>
+        <label for="file_dir">.blend file directory</label>
         <input
-          id="file_path"
+          id="file_dir"
           type="text"
-          name="file-path"
-          value="C:\Users\hallo\Desktop\'Test.blend'"
+          name="file-dir"
+          value="C:\Users\hallo\Desktop\"
+          required
+        />
+        <label for="file_name">.blend file name</label>
+        <input
+          id="file_name"
+          type="text"
+          name="file-name"
+          value="Test"
+          required
         />
       </section>
 
       <section class="box">
         <h2>Blender path</h2>
-        <label for="install_dir">Blender download directory</label>
+        <label for="blender_path">Open blender directory</label>
         <input
-          id="install_dir"
-          name="install-dir"
+          id="blender_path"
           type="text"
-          name="install_dir"
+          name="blender-path"
+          value="cd '\Program Files (x86)\Steam\steamapps\common\Blender\'"
+          required
+        />
+        <label for="run_blender">Run blender</label>
+        <input
+          id="run_blender"
+          type="text"
+          name="run-blender"
           value="./blender"
+          required
         />
       </section>
 
@@ -90,14 +108,12 @@
       
           <button type="submit">Generate command</button>
             <button id="clear" type="button">Clear</button>
+            <label id="alert" class="hidden" for="output">Copied to clipboard</label>
 
       </section>
     </form>
 
-    
-
     <section class="container cmd-display">
-      <label id="alert" class="hidden" for="output">Copied to clipboard</label>
       <textarea id="output"></textarea>  
     </section>
   
