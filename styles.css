@@ -42,9 +42,12 @@ textarea {
   white-space: pre-line;
 }
 
+button {
+  margin: 1rem;
+}
+
 button[type="submit"] {
   font-size: x-large;
-  margin: 1rem;
 }
 
 .container {

@@ -10,6 +10,10 @@ const startInput = document.querySelector("#start_frame");
 const endInput = document.querySelector("#end_frame");
 const wholeInput = document.querySelector("#whole_animation");
 const singleInput = document.querySelector("#single_frame");
+const saveBtn = document.querySelector("#save");
+const blenderPathInput = document.querySelector("#blender_path");
+
+getStoredState();
 
 userForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -126,3 +130,21 @@ singleInput.addEventListener("click", () => {
   startInput.value = "";
   endInput.value = "";
 });
+
+saveBtn.addEventListener("click", () => {
+  let presetPath = blenderPathInput.value;
+  storePreset(presetPath);
+  alert("path saved for future browser sessions");
+});
+
+function getStoredState() {
+  let storedPreset = window.localStorage.getItem("presetPath");
+  if (storedPreset !== null) {
+    let preset = JSON.parse(storedPreset);
+    blenderPathInput.value = preset;
+  }
+}
+
+function storePreset(preset) {
+  window.localStorage.setItem("presetPath", JSON.stringify(preset));
+}
