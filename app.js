@@ -29,6 +29,11 @@ userForm.addEventListener("submit", (e) => {
     return;
   }
 
+  if (userArgs.filePath === "C:\\") {
+    alert("please enter path to blender file");
+    return;
+  }
+
   if (output.innerHTML === "") {
     output.innerHTML = concatCMD(userArgs, "full");
     navigator.clipboard.writeText(output.innerHTML);
@@ -50,7 +55,7 @@ function getUserArgs() {
 
   const userArgs = {
     blenderDir: `cd '${formData.get("blender-path")}'`,
-    fileDir: getPath(formData.get("file-path")),
+    filePath: getPath(formData.get("file-path")),
     fileName: getFileName(formData.get("file-path")),
     blender: formData.get("run-blender"),
     engine: formData.get("render-engine"),
@@ -66,7 +71,7 @@ function getUserArgs() {
 
 function concatCMD(userArgs, mode) {
   const part1 = `${userArgs.blenderDir}\n${userArgs.blender} -b`;
-  const part2 = ` ${userArgs.fileDir}${userArgs.fileName} ${
+  const part2 = ` ${userArgs.filePath}${userArgs.fileName} ${
     userArgs.engine
   } ${validateStartEnd(userArgs.start)} ${validateStartEnd(userArgs.end)} ${
     userArgs.animation
@@ -147,7 +152,8 @@ singleInput.addEventListener("click", () => {
   endInput.value = "";
 });
 
-saveBtn.addEventListener("click", () => {
+saveBtn.addEventListener("click", (e) => {
+  e.preventDefault();
   let presetPath = blenderPathInput.value;
   storePreset(presetPath);
   alert("path saved for future browser sessions");
