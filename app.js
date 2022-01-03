@@ -69,11 +69,11 @@ userForm.addEventListener("submit", (e) => {
 });
 
 function fullConcatCMD(userArgs) {
-  return `${userArgs.blenderDir}&#13;${userArgs.blender} -b ${
-    userArgs.fileDir
-  }${userArgs.fileName} ${userArgs.engineArg} ${
-    userArgs.startArg ? userArgs.startArg : ""
-  } ${userArgs.endArg ? userArgs.endArg : ""} ${userArgs.animationArg} ${
+  return `${userArgs.blenderDir}\n${userArgs.blender} -b ${userArgs.fileDir}${
+    userArgs.fileName
+  } ${userArgs.engineArg} ${userArgs.startArg ? userArgs.startArg : ""} ${
+    userArgs.endArg ? userArgs.endArg : ""
+  } ${userArgs.animationArg} ${
     userArgs.frameNumArg && userArgs.animationArg === "-f"
       ? userArgs.frameNumArg
       : ""
