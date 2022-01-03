@@ -62,7 +62,7 @@ function getUserArgs() {
     engine: formData.get("render-engine"),
     print: formData.get("print-stats") ? "--cycles-print-stats" : null,
     start: `-s ${formData.get("start-frame")}`,
-    end: `-e ${formData.get("start-frame")}`,
+    end: `-e ${formData.get("end-frame")}`,
     frames: formData.get("frames"),
     animation: formData.get("animation"),
   };
