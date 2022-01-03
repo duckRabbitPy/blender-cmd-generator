@@ -68,3 +68,7 @@ button[type="submit"] {
 .cmd-display {
   margin-bottom: 3rem;
 }
+
+.example {
+  font-size: smaller;
+}
