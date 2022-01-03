@@ -125,6 +125,10 @@ span i {
   margin: 5px;
 }
 
+span a {
+  color: white;
+}
+
 span a:visited {
   color: aqua;
 }
