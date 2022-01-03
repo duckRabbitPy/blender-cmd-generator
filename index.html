@@ -6,11 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blender command line GUI</title>
     <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
+    <link rel="shortcut icon" type="image/jpg" href="./Media/blender.png"/>
   </head>
   <body>
     
     <form id="blender_inputs">
+      <header>
       <h1>Blender command line GUI</h1>
+      <img src="Media/blender.png">
+      </header>
       <section class="box">
         <h2>Target file</h2>
         <label for="file_path">.blend object path</label>
@@ -106,6 +116,13 @@
       <label class="light-txt">Output</label>
       <textarea id="output"></textarea>  
     </section>
+
+    <footer>
+      <p>
+        <span><a href="https://github.com/duckRabbitPy"><i id="github-icon" class="fab fa-github"></i></a></span
+        >DuckRabbitPy
+      </p>
+    </footer>
   
     <script src="app.js"></script>
   </body>
