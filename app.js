@@ -30,7 +30,8 @@ userForm.addEventListener("submit", (e) => {
   }
 
   if (userArgs.filePath === "C:\\") {
-    alert("please enter path to blender file");
+    console.log(userArgs.filePath);
+    alert("please enter valid path to blender file", userArgs.filePath);
     return;
   }
 
