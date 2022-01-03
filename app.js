@@ -66,7 +66,7 @@ function getUserArgs() {
 
 function concatCMD(userArgs, mode) {
   const part1 = `${userArgs.blenderDir}\n${userArgs.blender} -b`;
-  const part2 = `${userArgs.fileDir}${userArgs.fileName} ${
+  const part2 = ` ${userArgs.fileDir}${userArgs.fileName} ${
     userArgs.engine
   } ${validateStartEnd(userArgs.start)} ${validateStartEnd(userArgs.end)} ${
     userArgs.animation
