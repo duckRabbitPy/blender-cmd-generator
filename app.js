@@ -49,7 +49,7 @@ function getUserArgs() {
   formData = new FormData(userForm);
 
   const userArgs = {
-    blenderDir: formData.get("blender-path"),
+    blenderDir: `cd '${formData.get("blender-path")}'`,
     fileDir: getPath(formData.get("file-path")),
     fileName: getFileName(formData.get("file-path")),
     blender: formData.get("run-blender"),
