@@ -13,19 +13,20 @@
       <h1>Blender command line GUI</h1>
       <section class="box">
         <h2>Target file</h2>
-        <label for="file_path">.blend object directory</label>
+        <label for="file_path">.blend object path</label>
         <input
           id="file_path"
           type="text"
           name="file-path"
-          value="C:\Users\hallo\Desktop\Test\Test 1.blend"
+          value="C:\"
           required
         />
+        <p>Example: C:\Users\Bob\Desktop\BlenderArt\design1.blend</p>
       </section>
 
       <section class="box">
         <h2>Blender path</h2>
-        <label for="blender_path">Open blender directory</label>
+        <label for="blender_path">Blender download directory</label>
         <input
           id="blender_path"
           type="text"
@@ -33,7 +34,7 @@
           value="cd '\Program Files (x86)\Steam\steamapps\common\Blender\'"
           required
         />
-        <label for="run_blender">Run blender</label>
+        <label for="run_blender">default run command</label>
         <input
           id="run_blender"
           type="text"
