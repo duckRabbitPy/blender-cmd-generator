@@ -43,6 +43,7 @@ userForm.addEventListener("submit", (e) => {
   }
 
   copyAlert.classList.remove("hidden");
+
   setTimeout(() => {
     copyAlert.classList.add("hidden");
   }, 1000);
@@ -55,11 +56,10 @@ function getUserArgs() {
 
   const userArgs = {
     blenderDir: `cd '${formData.get("blender-path")}'`,
-    filePath: getPath(formData.get("file-path")),
-    fileName: getFileName(formData.get("file-path")),
+    filePath: formData.get("file-path"),
     blender: formData.get("run-blender"),
     engine: formData.get("render-engine"),
-    print: formData.get("print-stats") ? "--cycles-print-stats" : null,
+    print: formData.get("print-stats") ? "-- --cycles-print-stats" : null,
     start: `-s ${formData.get("start-frame")}`,
     end: `-e ${formData.get("end-frame")}`,
     frames: formData.get("frames"),
@@ -71,13 +71,12 @@ function getUserArgs() {
 
 function concatCMD(userArgs, mode) {
   const part1 = `${userArgs.blenderDir}\n${userArgs.blender} -b`;
-  const part2 = ` ${userArgs.filePath}${userArgs.fileName} ${
-    userArgs.engine
-  } ${validateStartEnd(userArgs.start)} ${validateStartEnd(userArgs.end)} ${
+  const part2 = ` '${userArgs.filePath}' ${userArgs.engine} ${validateStartEnd(
+    userArgs.start
+  )} ${validateStartEnd(userArgs.end)} ${userArgs.animation} ${validateFrames(
+    userArgs.frames,
     userArgs.animation
-  } ${validateFrames(userArgs.frames, userArgs.animation)} ${validatePrint(
-    userArgs.print
-  )}`.replace(/\s\s+/g, " ");
+  )} ${validatePrint(userArgs.print)}`.replace(/\s\s+/g, " ");
 
   return mode === "full" ? part1 + part2 : part2;
 }
@@ -92,16 +91,6 @@ function validateFrames(frameNum, animation) {
 
 function validatePrint(arg) {
   return arg ? arg : "";
-}
-
-function getFileName(path) {
-  const lastSeperatorPos = path.lastIndexOf("\\");
-  return `'${path.slice(lastSeperatorPos + 1, path.length)}'`;
-}
-
-function getPath(path) {
-  const lastSeperatorPos = path.lastIndexOf("\\");
-  return path.slice(0, lastSeperatorPos + 1);
 }
 
 function getStoredState() {
