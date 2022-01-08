@@ -96,6 +96,11 @@ button:hover {
   visibility: hidden;
 }
 
+.disclaimer {
+  color: white;
+  font-size: large;
+}
+
 .cmd-display {
   display: flex;
   flex-direction: column;

@@ -57,7 +57,7 @@ function getUserArgs() {
   const userArgs = {
     blenderDir: `cd '${formData.get("blender-path")}'`,
     filePath: formData.get("file-path"),
-    blender: formData.get("run-blender"),
+    blender: "./blender",
     engine: formData.get("render-engine"),
     print: formData.get("print-stats") ? "-- --cycles-print-stats" : null,
     start: `-s ${formData.get("start-frame")}`,
