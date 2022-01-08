@@ -55,7 +55,7 @@ function getUserArgs() {
   formData = new FormData(userForm);
 
   const userArgs = {
-    blenderDir: `cd '${formData.get("blender-path")}'`,
+    blenderDir: `cd '${truncateEXE(formData.get("blender-path"))}'`,
     filePath: formData.get("file-path"),
     blender: "./blender",
     engine: formData.get("render-engine"),
@@ -91,6 +91,14 @@ function validateFrames(frameNum, animation) {
 
 function validatePrint(arg) {
   return arg ? arg : "";
+}
+
+function truncateEXE(path) {
+  if (path.endsWith("blender.exe")) {
+    return path.slice(0, path.length - "blender.exe".length);
+  } else {
+    return path;
+  }
 }
 
 function getStoredState() {
