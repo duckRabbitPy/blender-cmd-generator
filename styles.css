@@ -96,6 +96,16 @@ button:hover {
   visibility: hidden;
 }
 
+.disclaimer,
+.guide {
+  color: white;
+  font-size: medium;
+}
+
+.guide {
+  margin: 1rem;
+}
+
 .cmd-display {
   display: flex;
   flex-direction: column;
@@ -114,9 +124,11 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 1rem;
 }
 
 footer > p {
+  margin: 0;
   font-size: x-large;
   color: white;
 }

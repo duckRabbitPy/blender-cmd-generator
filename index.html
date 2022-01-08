@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blender command line GUI</title>
+    <title>Blender Command Line Render Tool
+    </title>
     <link rel="stylesheet" href="styles.css" />
     <link
       rel="stylesheet"
@@ -18,8 +19,12 @@
     
     <form id="blender_inputs">
       <header>
-      <h1>Blender command line GUI</h1>
+      <h1>Blender Command Line Render Tool
+      </h1>
       <img src="Media/blender.png">
+      <nav>
+        <a class="guide" href="./guide.html" target="_blank">View guide</a>
+      </nav>
       </header>
       <section class="box">
         <h2>Target file</h2>
@@ -41,20 +46,12 @@
           id="blender_path"
           type="text"
           name="blender-path"
-          value="\Program Files (x86)\Steam\steamapps\common\Blender\"
+          value=""
           required
         />
-        <p class="example">e.g. \Program Files (x86)\Steam\steamapps\common\Blender\</p>
-        <label for="run_blender">default run command</label>
-        <input
-          id="run_blender"
-          type="text"
-          name="run-blender"
-          value="./blender"
-          required
-        />
+        <p class="example">e.g. C:\Program Files (x86)\Steam\steamapps\common\Blender\</p>
         <br>
-        <button id="save">Save preset in memory</button>
+        <button id="save">Save download path in memory</button>
       </section>
 
       <section class="box">
@@ -119,9 +116,12 @@
 
     <footer>
       <p>
-        <span><a href="https://github.com/duckRabbitPy"><i id="github-icon" class="fab fa-github"></i></a></span
+        <span><i id="github-icon" class="fab fa-github"></i></span
         >DuckRabbitPy
       </p>
+      <a class="disclaimer" target="_blank" href="
+          ./disclaimer.html">disclaimer</a>
+    
     </footer>
   
     <script src="app.js"></script>
