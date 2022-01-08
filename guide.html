@@ -8,6 +8,164 @@
     <title>Blender command line GUI Disclaimer</title>
   </head>
   <body>
-    <h1>Guide</h1>
+    <main>
+      <header>
+        <h1>Blender Command Line Render Tool: User Guide</h1>
+
+        <img src="Media/blender.png" />
+      </header>
+      <h2>
+        What is command line rendering/batch rendering and what are the
+        benefits?
+      </h2>
+      <ul>
+        <li>
+          Command line rendering runs blender in the background with no user
+          interface. The result is a faster, much more stable rendering process.
+          If you have a large complex scene, rendering without a user interface
+          can prevent crashes.
+        </li>
+        <li>
+          If your computer is powerful enough, it will also allow you to work on
+          other Blender projects whilst rendering in the background (more stable
+          than opening multiple instances)
+        </li>
+        <li>
+          You can also do ‘batch rendering’ you can queue up multiple renders to
+          run sequentially. This is great if you want to render overnight or
+          when away from your computer. You can read up about Blender command
+          line rendering here
+        </li>
+      </ul>
+
+      <h2>What is Blender Command Line Render Tool?</h2>
+      <ol>
+        <li>
+          <h3>Input Target file</h3>
+          <ul>
+            <li>
+              It is recommended that you move your blend file(s) you want to
+              render to your desktop.
+            </li>
+            <li>
+              To find you the file path, right click on the file, go to
+              properties, navigate to the security tab and copy paste the object
+              name. C:/ has been pre-populated (you can change if running off a
+              different drive).
+            </li>
+          </ul>
+        </li>
+        <li>
+          <h3>Input Blender download directory</h3>
+          <ul>
+            <li>
+              You need to input your Blender application file path. You can do
+              this by navigating to where your blender application is located
+              and looking under properties as per step 1.
+            </li>
+            <p>
+              This is an example of where I downloaded a copy of Blender 3.1 to
+              my desktop C:\Users\hallo\OneDrive\Desktop\Blender 3.1
+              alpha\blender-3.1.0-alpha+master.1d9bac7d921f-windows.amd64-release\blender.exe
+            </p>
+            <p>
+              <strong>Tip:</strong> You can save the download directory as a
+              preset.
+            </p>
+          </ul>
+        </li>
+        <li>
+          <h3>Select your render engine</h3>
+          <p>
+            Eevee or Cycles – for Cycles you have the option to print stats –
+            this will give additonal information in the command line e.g. the
+            time taken to render (after the rendering has finished)
+          </p>
+        </li>
+        <li>
+          <h3>Render Type</h3>
+          <ul>
+            <li>
+              <strong>Selective animation</strong> - You can choose to render a
+              frame range, select this option and enter the start and end frame
+              you wish to render.
+            </li>
+            <li>
+              <strong>Full animation</strong> – this will render the full
+              animations
+            </li>
+            <li>
+              <strong>Single frame</strong> – type in the frame number you want
+              to be rendered
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p></p>
+          <h3>Generate new command</h3>
+
+          <p>
+            This will generate the script for you to copy paste into the command
+            line (Command + V to paste). Press enter to run.
+          </p>
+
+          <h4>How do I access the command line?</h4>
+          <p>
+            You can open the command line by searching for ‘Powershell’ in the
+            windows search bar.
+          </p>
+        </li>
+        <li>
+          <h3>How do I access the command line?</h3>
+          <p>
+            Once you have hit generate, simply change the variables above i.e.
+            choose a new blender file or select different frame numbers, hit
+            ‘add to batch’ and this will generate a new script with the
+            additional tasks added.
+          </p>
+        </li>
+        <h3>Troubleshooting</h3>
+        <ul>
+          <li>
+            Make sure you set the output folder within the output properties tab
+            of blender prior to rendering (where you want frames to be stored).
+          </li>
+          <li>
+            Make sure you are happy with render settings in blender i.e.
+            samples, resolution.
+          </li>
+          <li>
+            Getting the correct blender file path/directory is the most likely
+            cause of issues. To simplify, you can re-download blender and save
+            it to your desktop, or download a version from
+            https://builder.blender.org/download/daily/archive/
+          </li>
+          <li>
+            If the clear button doesn’t work, then try refreshing your browser
+          </li>
+
+          <li>
+            The app defaults to C:/ If you have a different drive you want to
+            run off (such as D:/ or Macbook then you can change this text.
+          </li>
+          <li>
+            If you use steam to open blender it may be stored in an odd
+            location, my steam blender file is stored in \Program Files
+            (x86)\Steam\steamapps\common\Blender\
+          </li>
+          <li>
+            How do I know my render is running? – in the command line you should
+            see text indicating the frame being rendered and how many samples
+            have been processed. ‘Blender quit’ indicates the render is
+            complete.
+          </li>
+          <li>
+            Do not close the Powershell window until it has completed rendering,
+            closing will stop the render. If you want to render again/another
+            project, then close and open a new power shell window.
+          </li>
+        </ul>
+      </ol>
+    </main>
   </body>
 </html>
