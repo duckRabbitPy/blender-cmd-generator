@@ -34,11 +34,32 @@
           You can also do ‘batch rendering’ you can queue up multiple renders to
           run sequentially. This is great if you want to render overnight or
           when away from your computer. You can read up about Blender command
-          line rendering here
+          line rendering
+          <a
+            href="https://docs.blender.org/manual/en/latest/advanced/command_line/render.html?fbclid=IwAR1H8WJmE3kzHT_m20aZahcAqlRY6va7A7Xn2bF8AXaqO9OfyKTshz9RCC8"
+            target="_blank"
+            >here</a
+          >
         </li>
       </ul>
 
       <h2>What is Blender Command Line Render Tool?</h2>
+      <ul>
+        <li>
+          Blender Command Line Render Tool is a web based application to quickly
+          and easily produce scripts that can be run on your computer’s command
+          line (PowerShell). You have full visibility over the script generated.
+        </li>
+        <li>
+          Instead of manually typing out these commands, which can be time
+          consuming and prone to formatting errors, this simple interface
+          automates the formatting of the script.
+        </li>
+        <li>
+          Just follow the steps outlined on the page and copy and paste (Ctrl +
+          V) the command into Windows Powershell (enter to run command).
+        </li>
+      </ul>
       <ol>
         <li>
           <h3>Input Target file</h3>
@@ -48,7 +69,7 @@
               render to your desktop.
             </li>
             <li>
-              To find you the file path, right click on the file, go to
+              To find your blend file path, right click on the file, go to
               properties, navigate to the security tab and copy paste the object
               name. C:/ has been pre-populated (you can change if running off a
               different drive).
@@ -56,30 +77,37 @@
           </ul>
         </li>
         <li>
-          <h3>Input Blender download directory</h3>
+          <h3>Input Blender application download directory</h3>
           <ul>
             <li>
-              You need to input your Blender application file path. You can do
-              this by navigating to where your blender application is located
+              Next you need to input your Blender application file path. You can
+              do this by navigating to where your blender application is located
               and looking under properties as per step 1.
             </li>
             <p>
               This is an example of where I downloaded a copy of Blender 3.1 to
-              my desktop C:\Users\hallo\OneDrive\Desktop\Blender 3.1
+              my desktop C:\Users\duckrabbit\Desktop\Blender 3.1
               alpha\blender-3.1.0-alpha+master.1d9bac7d921f-windows.amd64-release\blender.exe
             </p>
             <p>
+              If you use Steam to open blender, the application may be stored
+              within the steamapps directory e.g. \Program Files
+              (x86)\Steam\steamapps\common\Blender\
+            </p>
+            <p>
               <strong>Tip:</strong> You can save the download directory as a
-              preset.
+              preset as the blender application path will be the same for all
+              renders.
             </p>
           </ul>
         </li>
         <li>
           <h3>Select your render engine</h3>
           <p>
-            Eevee or Cycles – for Cycles you have the option to print stats –
-            this will give additonal information in the command line e.g. the
-            time taken to render (after the rendering has finished)
+            Choose between Eevee or Cycles – for Cycles you have the option to
+            print stats – this will give additonal information in the command
+            line e.g. the time taken to render (after the rendering has
+            finished)
           </p>
         </li>
         <li>
@@ -92,11 +120,11 @@
             </li>
             <li>
               <strong>Full animation</strong> – this will render the full
-              animations
+              animation in its entirety.
             </li>
             <li>
               <strong>Single frame</strong> – type in the frame number you want
-              to be rendered
+              to be rendered.
             </li>
           </ul>
         </li>
@@ -116,10 +144,10 @@
           </p>
         </li>
         <li>
-          <h3>How do I access the command line?</h3>
+          <h3>Creating a batch rendering script</h3>
           <p>
-            Once you have hit generate, simply change the variables above i.e.
-            choose a new blender file or select different frame numbers, hit
+            Once you hit generate, simply change the variables above i.e. choose
+            a new blender file or select different frame numbers etc. then hit
             ‘add to batch’ and this will generate a new script with the
             additional tasks added.
           </p>
@@ -135,23 +163,18 @@
             samples, resolution.
           </li>
           <li>
-            Getting the correct blender file path/directory is the most likely
+            Having an incorrect blender file path/directory is the most likely
             cause of issues. To simplify, you can re-download blender and save
             it to your desktop, or download a version from
             https://builder.blender.org/download/daily/archive/
           </li>
           <li>
-            If the clear button doesn’t work, then try refreshing your browser
+            If the clear button doesn’t work, try refreshing your browser tab.
           </li>
 
           <li>
             The app defaults to C:/ If you have a different drive you want to
             run off (such as D:/ or Macbook then you can change this text.
-          </li>
-          <li>
-            If you use steam to open blender it may be stored in an odd
-            location, my steam blender file is stored in \Program Files
-            (x86)\Steam\steamapps\common\Blender\
           </li>
           <li>
             How do I know my render is running? – in the command line you should
