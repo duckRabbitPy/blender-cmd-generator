@@ -68,3 +68,6 @@
 - The app defaults to C:/ If you have a different drive you want to run off (such as D:/ or Macbook then you can change this text.
 - How do I know my render is running? – in the command line you should see text indicating the frame being rendered and how many samples have been processed. ‘Blender quit’ indicates the render is complete.
 - Do not close the Powershell window until it has completed rendering, closing will stop the render. If you want to render again/another project, then close and open a new power shell window.
+
+
+You can support this project here: https://hallobros.gumroad.com/l/oxbpo?fbclid=IwAR2u-6HmVpFpBARlVWrnUT03ni6_aT68iv8MRsrbOrXHzIQrZYdPnrqIHvA
