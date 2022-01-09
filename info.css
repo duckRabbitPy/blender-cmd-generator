@@ -10,6 +10,7 @@ body {
   background-color: rgb(238, 238, 238);
   overflow: auto;
   height: 100%;
+  font-size: x-large;
 }
 
 header {
@@ -20,7 +21,7 @@ header {
 }
 
 main {
-  margin: 3rem;
+  padding: 1rem 4rem 4rem 4rem;
 }
 
 img {
